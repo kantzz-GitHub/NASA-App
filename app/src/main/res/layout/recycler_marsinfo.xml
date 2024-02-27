@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:id="@+id/roverID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView"
+        android:text="Rover Id:"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/roverName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/roverID"
+        android:text="Rover Name:"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textViewSol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/roverName"
+        android:text="Sol:"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textViewEarthDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewSol"
+        android:text="Earth Date:"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/cameraName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewEarthDate"
+        android:text="Camera Name:"
+        android:textSize="20sp" />
+
+
+</RelativeLayout>
