@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">NASA-App</string>
+    <string name="rover_info_for_mars">Rover Info for Mars</string>
+    <string name="today_s_asteroid_watch">Today\'s Asteroid watch</string>
+    <string name="watch_out_for_today_s_asteroids">Watch out for Today\'s Asteroids</string>
     <string name="title_activity_picture">PictureActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
