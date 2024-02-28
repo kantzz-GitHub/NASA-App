@@ -5,29 +5,21 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.nasa_app.interfaces.IMarsData
 import com.example.nasa_app.model.MarsDataResponse
 import com.example.nasa_app.model.RoverPhoto
-import com.example.nasa_app.service.APIService
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import com.example.nasa_app.repositories.MarsDataRepository
 import kotlinx.coroutines.launch
-import okhttp3.OkHttpClient
 
-class MarsViewModel : ViewModel(), APIService {
+class MarsViewModel : ViewModel(),IMarsData {
 
     private val _marsData = MutableLiveData<List<RoverPhoto>>()
     val marsData: LiveData<List<RoverPhoto>> = _marsData
+    private var marsDataRep: IMarsData = MarsDataRepository()
 
-    override suspend fun getMarsData(sol: Int, page: Int, apiKey:String): MarsDataResponse {
+    override suspend fun getMarsData(sol: Int, page: Int, apiKey: String): MarsDataResponse {
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.nasa.gov/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(APIService::class.java)
-
-        var marsData = retrofit.getMarsData(sol, page,apiKey)
-        return  marsData
+        return marsDataRep.getMarsData(sol, page, apiKey)
     }
 
     fun fetchMarsInfo(sol: Int, page: Int,apiKey: String) {
