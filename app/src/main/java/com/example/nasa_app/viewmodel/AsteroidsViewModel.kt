@@ -7,22 +7,24 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.nasa_app.interfaces.IAsteroidsData
 import com.example.nasa_app.model.AsteroidDataResponse
+import com.example.nasa_app.model.NearEarthObject
 import com.example.nasa_app.repositories.AsteroidsDataRepository
 import kotlinx.coroutines.launch
+import java.time.LocalDate
 
 class AsteroidsViewModel: ViewModel(), IAsteroidsData {
 
 
-    private val _asteroidData = MutableLiveData<Int>()
-    val asteroidData: LiveData<Int> = _asteroidData
+    private val _asteroidData = MutableLiveData<Map<String,List<NearEarthObject>>>()
+    val asteroidData: LiveData<Map<String,List<NearEarthObject>>> = _asteroidData
     private var asteroidDataRep: IAsteroidsData = AsteroidsDataRepository()
 
 
     fun fetchAsteroidData() {
         viewModelScope.launch {
             try {
-                val fetchedData = getAsteroidsData("2015-09-07","2015-09-08","XHTunl7AhqAt4VGOW5dEWP1AseCzGBN1hL5ToSA0")
-                _asteroidData.value = fetchedData.elementCount
+                val fetchedData = getAsteroidsData(LocalDate.now().toString(),LocalDate.now().toString(),"XHTunl7AhqAt4VGOW5dEWP1AseCzGBN1hL5ToSA0")
+                _asteroidData.value = fetchedData.nearEarthObjects
                 Log.e("AsteroidView", fetchedData.toString())
             } catch (e: Exception) {
                 Log.e("AsteroidViewModel", "Error fetching asteroid data: ${e.message}", e)
