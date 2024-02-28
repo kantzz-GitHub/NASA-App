@@ -1,12 +1,13 @@
 package com.example.nasa_app.viewmodel
 
-import PicOfTheDayResponse
+
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.nasa_app.interfaces.IPicOfTheDay
+import com.example.nasa_app.model.PicOfTheDayResponse
 import com.example.nasa_app.repositories.PicOfTheDayRepository
 import kotlinx.coroutines.launch
 
