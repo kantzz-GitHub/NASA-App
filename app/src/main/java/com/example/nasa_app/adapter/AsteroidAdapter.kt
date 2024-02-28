@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.example.nasa_app.DetailedImageView
 import com.example.nasa_app.R
 import com.example.nasa_app.model.NearEarthObject
+import com.google.android.material.resources.TextAppearance
 
 class AsteroidAdapter(private var asteroids: MutableList<NearEarthObject>) :
     RecyclerView.Adapter<AsteroidAdapter.ViewHolder>() {
@@ -35,9 +36,10 @@ class AsteroidAdapter(private var asteroids: MutableList<NearEarthObject>) :
             .into(holder.imageView)
 
         holder.roverID.text = "Name: ${asteroid.name}"
+        holder.roverID.setTextSize(25f)
         holder.textViewEarthDate.text = "Close Approach Date: ${asteroid.close_approach_data[0].closeApproachDateFull}"
         holder.roverName.text = "Max Diameter: ${asteroid.estimated_diameter.kilometers?.estimatedDiameterMax} KM"
-        holder.textViewSol.text = "Miss Distance : ${asteroid.close_approach_data[0].missDistance?.kilometers} Km"
+        holder.textViewSol.text = "Potential Hazard: ${asteroid.is_potentially_hazardous_asteroid}\nMiss Distance : ${asteroid.close_approach_data[0].missDistance?.kilometers} Km"
         if(asteroid.is_potentially_hazardous_asteroid){
             holder.textViewSol.setTextColor(Color.RED)
         }else{
