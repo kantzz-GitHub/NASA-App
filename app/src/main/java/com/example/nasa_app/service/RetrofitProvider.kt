@@ -16,8 +16,4 @@ object RetrofitProvider {
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .build()
     }
-
-
-
-
 }
