@@ -24,14 +24,12 @@ class MarsViewModel : ViewModel(),IMarsData {
 
     fun fetchMarsInfo(sol: Int, page: Int,apiKey: String) {
         viewModelScope.launch {
-
             try {
                 val fetchedMarsData = getMarsData(sol,page,apiKey)
                 _marsData.value = fetchedMarsData.photos
             } catch (e: Exception) {
                 Log.e("MarsViewModel", "Error fetching Mars data: ${e.message}", e)
             }
-
         }
     }
 }
