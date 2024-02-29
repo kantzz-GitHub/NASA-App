@@ -23,11 +23,15 @@ class PictureActivity : AppCompatActivity() {
         val viewModel = PicOfTheDayViewModel()
 
         viewModel.pictureData.observe(this, Observer { picture ->
-            binding.tvCopyright.text = picture.copyright
-            binding.tvDate.text = picture.date
-            binding.tvName.text = picture.title
+            binding.tvCopyright.text = picture.copyright.trim()
+            binding.tvDate.text = picture.date.trim()
+            binding.tvName.text = picture.title.trim()
 
-            Glide.with(this).load(picture.url).into(binding.imageView2)
+            Glide.with(this)
+                .load(picture.url)
+                .into(binding.imageView2)
         })
+
+        viewModel.fetchPicture("XHTunl7AhqAt4VGOW5dEWP1AseCzGBN1hL5ToSA0")
     }
 }

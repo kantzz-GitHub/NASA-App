@@ -8,8 +8,6 @@ import com.example.nasa_app.databinding.ActivityMainBinding
 import com.example.nasa_app.view.AsteroidsActivity
 
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -24,7 +22,14 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, AsteroidsActivity::class.java))
         }
 
+        val pictureOfTheDayBtn = findViewById<Button>(R.id.pictureOfTheDayBtn)
+        pictureOfTheDayBtn.setOnClickListener {
+            startActivity(Intent(this, PictureActivity::class.java))
+        }
 
-
+        val aboutBtn = findViewById<Button>(R.id.about)
+        aboutBtn.setOnClickListener {
+            startActivity(Intent(this, AboutActivity::class.java))
+        }
     }
 }

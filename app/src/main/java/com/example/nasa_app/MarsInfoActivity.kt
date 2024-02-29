@@ -27,8 +27,6 @@ class MarsInfoActivity : AppCompatActivity() {
         viewModel.marsData.observe(this, Observer<List<RoverPhoto>> { roverPhotos ->
             adapter.setData(roverPhotos)
         })
-        //TODO : add the api key to local.properties
         viewModel.fetchMarsInfo(1000, 1,"XHTunl7AhqAt4VGOW5dEWP1AseCzGBN1hL5ToSA0")
-
     }
 }

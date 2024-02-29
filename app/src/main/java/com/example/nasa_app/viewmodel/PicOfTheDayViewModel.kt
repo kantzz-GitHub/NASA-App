@@ -25,13 +25,7 @@ class PicOfTheDayViewModel: ViewModel(), IPicOfTheDay {
         viewModelScope.launch {
             try {
                 val fetchedPicture = getPicOfTheDay(apiKey)
-                val picture = object {
-                    val copyright: String = fetchedPicture.copyright
-                    val date: String = fetchedPicture.date
-                    val title: String = fetchedPicture.title
-                    val url: String = fetchedPicture.url
-                }
-                _pictureData.value = picture as PicOfTheDayResponse
+                _pictureData.value = fetchedPicture
             } catch (e: Exception) {
                 Log.e("PicOfTheDayViewModel", "Error fetching PicOfTheDay data: ${e.message}", e)
             }
